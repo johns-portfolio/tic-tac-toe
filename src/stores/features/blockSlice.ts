@@ -13,8 +13,6 @@ export interface BlockState {
   blocks: BlockItem[]
   currentUser: User
   winner?: User
-  // xUserBlock: number[]
-  // oUserBlock: number[]
 }
 
 const initialState: BlockState = {
@@ -49,8 +47,6 @@ const initialState: BlockState = {
   ],
   currentUser: 'X',
   winner: undefined
-  // xUserBlock: [],
-  // oUserBlock: []
 }
 
 export const blockSlice = createSlice({
@@ -67,7 +63,7 @@ export const blockSlice = createSlice({
         existItem.user = action.payload.user
 
         // Check Winner
-        const winner = calculateWinner(state.blocks, state.currentUser)
+        const winner = isWinner(state.blocks, state.currentUser)
         if (winner) {
           state.winner = state.currentUser
         } else {
@@ -88,10 +84,11 @@ export const blockSlice = createSlice({
   }
 })
 
-const calculateWinner = (blocks: BlockItem[], currentUser: User): boolean => {
+const isWinner = (blocks: BlockItem[], currentUser: User): boolean => {
   const ownBlocks = blocks
     .filter((c) => c.user === currentUser)
     .map((c) => c.id)
+  console.log('🔥 ownBlocks', ownBlocks)
   if (ownBlocks.length < 3) {
     return false
   }
@@ -110,7 +107,8 @@ const calculateWinner = (blocks: BlockItem[], currentUser: User): boolean => {
   ]
 
   for (const rule of winRules) {
-    const isWin = ownBlocks.every((c) => rule.includes(c))
+    const isWin = rule.every((c) => ownBlocks.includes(c))
+    console.log('🔥 rule', rule, isWin)
     if (isWin) {
       return true
     }
