@@ -1,5 +1,7 @@
-require('dotenv').config()
-const StaticServer = require('static-server')
+import * as dotenv from 'dotenv'
+import StaticServer from 'static-server'
+dotenv.config()
+
 const server = new StaticServer({
   rootPath: 'dist',
   port: process.env.PORT
