@@ -6,13 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "start": "vite",
+    "start": "node server.js",
     "preview": "vite preview"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.8.4",
     "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
