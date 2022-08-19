@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "start": "node server.js",
+    "start": "vite",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -19,6 +19,7 @@
     "static-server": "^2.2.1"
   },
   "devDependencies": {
+    "@types/node": "^18.7.6",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
